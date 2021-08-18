@@ -75,17 +75,16 @@
     </joint>
   </xacro:if>
 
-  <sciurus17_body
+  <xacro:sciurus17_body
     waist_yaw_upper_limit="${radians(-110)}"
     waist_yaw_lower_limit="${radians(110)}"
     waist_yaw_effort_limit="${EFFORT_LIMIT}"
     waist_yaw_velocity_limit="${VELOCITY_LIMIT}"
     base_color="white"
     body_color="white"
-    camera_color="white">
-  </sciurus17_body>
+    camera_color="white"/>
 
-  <sciurus17_head
+  <xacro:sciurus17_head
     neck_yaw_lower_limit="${radians(-165)}"
     neck_yaw_upper_limit="${radians(165)}"
     neck_pitch_lower_limit="${radians(-90)}"
@@ -93,10 +92,9 @@
     neck_joints_effort_limit="${EFFORT_LIMIT}"
     neck_joints_velocity_limit="${VELOCITY_LIMIT}"
     head_color="white"
-    camera_color="white">
-  </sciurus17_head>
+    camera_color="white"/>
 
-  <sciurus17_right_arm
+  <xacro:sciurus17_right_arm
     arm_joint1_lower_limit="${radians(-90)}"
     arm_joint1_upper_limit="${radians(90)}"
     arm_joint2_lower_limit="${radians(-90)}"
@@ -113,18 +111,16 @@
     arm_joint7_upper_limit="${radians(170)}"
     arm_joints_effort_limit="${EFFORT_LIMIT}"
     arm_joints_velocity_limit="${VELOCITY_LIMIT}"
-    arm_color="white">
-  </sciurus17_right_arm>
+    arm_color="white"/>
 
-  <sciurus17_right_hand
+  <xacro:sciurus17_right_hand
     hand_joints_lower_limit="${radians(0)}"
     hand_joints_upper_limit="${radians(86)}"
     hand_joints_effort_limit="${EFFORT_LIMIT}"
     hand_joints_velocity_limit="${VELOCITY_LIMIT}"
-    hand_color="red">
-  </sciurus17_right_hand>
+    hand_color="red"/>
 
-  <sciurus17_left_arm
+  <xacro:sciurus17_left_arm
     arm_joint1_lower_limit="${radians(-90)}"
     arm_joint1_upper_limit="${radians(90)}"
     arm_joint2_lower_limit="${radians(0)}"
@@ -141,15 +137,13 @@
     arm_joint7_upper_limit="${radians(170)}"
     arm_joints_effort_limit="${EFFORT_LIMIT}"
     arm_joints_velocity_limit="${VELOCITY_LIMIT}"
-    arm_color="white">
-  </sciurus17_left_arm>
+    arm_color="white"/>
 
-  <sciurus17_left_hand
+  <xacro:sciurus17_left_hand
     hand_joints_lower_limit="${radians(-86)}"
     hand_joints_upper_limit="${radians(0)}"
     hand_joints_effort_limit="${EFFORT_LIMIT}"
     hand_joints_velocity_limit="${VELOCITY_LIMIT}"
-    hand_color="red">
-  </sciurus17_left_hand>
+    hand_color="red"/>
 
 </robot>

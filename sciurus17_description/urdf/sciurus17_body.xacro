@@ -36,10 +36,10 @@
       <parent link="base_link" />
       <child link="body_link" />
       <origin xyz="0.0 0.0 0.1315" rpy="0 0 0"/>
-      <limit 
-        lower="${waist_yaw_upper_limit}" 
-        upper="${waist_yaw_lower_limit}" 
-        effort="${waist_yaw_effort_limit}" 
+      <limit
+        lower="${waist_yaw_upper_limit}"
+        upper="${waist_yaw_lower_limit}"
+        effort="${waist_yaw_effort_limit}"
         velocity="${waist_yaw_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
