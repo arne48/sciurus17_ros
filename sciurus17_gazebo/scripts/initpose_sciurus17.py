@@ -15,9 +15,8 @@ initialize_joints =  rospy.ServiceProxy('/gazebo/set_model_configuration', SetMo
 rospy.sleep(5.0)
 
 pose_req = SetModelConfigurationRequest()
-# TODO make model_name parameterizable 
-pose_req.model_name = 'sciurus17_with_vehicle'
-pose_req.urdf_param_name = '/sciurus17/robot_description'
+pose_req.model_name = 'sciurus17'
+pose_req.urdf_param_name = '/robot_description'
 pose_req.joint_names =     [ 'waist_yaw_joint', 'neck_yaw_joint', 'neck_pitch_joint', \
                              'r_arm_joint1', 'r_arm_joint2', 'r_arm_joint3', 'r_arm_joint4', 'r_arm_joint5', 'r_arm_joint6', 'r_arm_joint7', 'l_hand_joint', \
                              'l_arm_joint1', 'l_arm_joint2', 'l_arm_joint3', 'l_arm_joint4', 'l_arm_joint5', 'l_arm_joint6', 'l_arm_joint7', 'r_hand_joint' ]
