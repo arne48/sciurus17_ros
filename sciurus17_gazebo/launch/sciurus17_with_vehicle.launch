@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <env name="GAZEBO_MODEL_PATH" value="$(find sciurus17_description):$(find sciurus17_gazebo)/models:$(find sciurus17_gazebo):$(find sciurus_vehicle_gazebo)/models:$(find sciurus_vehicle_description)"/>
-  <env name="gazebo_media_path" value="${find sciurus17_gazebo}"/> 
+  <env name="gazebo_media_path" value="${find sciurus17_gazebo}"/>
 
   <!-- Gazebo configurations-->
   <arg name="paused" default="true"/>
@@ -24,7 +24,7 @@
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description"
-    command="$(find xacro)/xacro --inorder '$(find sciurus17_description)/urdf/sciurus17.urdf.xacro' use_gazebo_simulation:=true"/>
+    command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17.urdf.xacro' use_gazebo_simulation:=true"/>
 
   <include file="$(find sciurus17_moveit_config)/launch/sciurus17_planning.launch">
     <arg name="use_gazebo" value="true"/>
