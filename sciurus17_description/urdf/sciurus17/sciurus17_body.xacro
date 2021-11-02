@@ -15,14 +15,14 @@
     <link name="base_link">
       <visual>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/Base.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/Base.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${base_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/Base.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/Base.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -48,14 +48,14 @@
     <link name="body_link">
       <visual>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/Body.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/Body.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${body_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/Body.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/Body.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>

@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="sciurus17_right_arm" 
+  <xacro:macro name="sciurus17_right_arm"
     params="arm_joint1_lower_limit
             arm_joint1_upper_limit
             arm_joint2_lower_limit
@@ -26,10 +26,10 @@
       <parent link="body_link" />
       <child link="r_link1" />
       <origin xyz="0.08083 -0.0965 0.2885" rpy="0 0 0"/>
-      <limit 
-        lower="${arm_joint1_lower_limit}" 
-        upper="${arm_joint1_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+      <limit
+        lower="${arm_joint1_lower_limit}"
+        upper="${arm_joint1_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="0 -1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -39,14 +39,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_Link1.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_Link1.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_Link1.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_Link1.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -60,10 +60,10 @@
       <parent link="r_link1" />
       <child link="r_link2" />
       <origin xyz="0.0 -0.064 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${arm_joint2_lower_limit}" 
-        upper="${arm_joint2_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+      <limit
+        lower="${arm_joint2_lower_limit}"
+        upper="${arm_joint2_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="-1 0 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -73,14 +73,14 @@
       <visual>
         <origin rpy="0 1.5708 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_Link2.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_Link2.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="0 1.5708 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_Link2.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_Link2.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -94,10 +94,10 @@
       <parent link="r_link2" />
       <child link="r_link3" />
       <origin xyz="0.0 -0.065 0.0" rpy="0 0 0"/>
-      <limit 
+      <limit
         lower="${arm_joint3_lower_limit}"
-        upper="${arm_joint3_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+        upper="${arm_joint3_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="0 -1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -107,14 +107,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/L_Link3.stl" scale="1.0 -1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/L_Link3.stl" scale="1.0 -1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/L_Link3.stl" scale="1.0 -1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/L_Link3.stl" scale="1.0 -1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -128,10 +128,10 @@
       <parent link="r_link3" />
       <child link="r_link4" />
       <origin xyz="0.0 -0.185 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${arm_joint4_lower_limit}" 
-        upper="${arm_joint4_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+      <limit
+        lower="${arm_joint4_lower_limit}"
+        upper="${arm_joint4_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -141,14 +141,14 @@
       <visual>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_Link4.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_Link4.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_Link4.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_Link4.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -162,10 +162,10 @@
       <parent link="r_link4" />
       <child link="r_link5" />
       <origin xyz="0.0 -0.121 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${arm_joint5_lower_limit}" 
-        upper="${arm_joint5_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+      <limit
+        lower="${arm_joint5_lower_limit}"
+        upper="${arm_joint5_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="0 -1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -175,14 +175,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_Link5.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_Link5.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <visual>
         <origin xyz="0.032 -0.074 0.0345" rpy="0 0 -2.0944"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="red_color">
           <color rgba="0.8984375 0.0 0.0703125 1"/>
@@ -191,7 +191,7 @@
       <visual>
         <origin xyz="0.013 -0.107 0.0345" rpy="0 0 -2.0944"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="black_color">
           <color rgba="0.2 0.2 0.2 1"/>
@@ -200,7 +200,7 @@
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_Link5.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_Link5.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -224,16 +224,22 @@
         </geometry>
         <material name="${arm_color}"/>
       </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <cylinder length="0.001" radius="0.001"/>
+        </geometry>
+      </collision>
     </link>
 
     <joint name="r_arm_joint6" type="revolute">
       <parent link="r_link5" />
       <child link="r_link6" />
       <origin xyz="0.0 -0.129 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${arm_joint6_lower_limit}" 
-        upper="${arm_joint6_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+      <limit
+        lower="${arm_joint6_lower_limit}"
+        upper="${arm_joint6_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -243,14 +249,14 @@
       <visual>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_Link6.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_Link6.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_Link6.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_Link6.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -264,10 +270,10 @@
       <parent link="r_link6" />
       <child link="r_link7" />
       <origin xyz="0.0 -0.0191 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${arm_joint7_lower_limit}" 
-        upper="${arm_joint7_upper_limit}" 
-        effort="${arm_joints_effort_limit}" 
+      <limit
+        lower="${arm_joint7_lower_limit}"
+        upper="${arm_joint7_upper_limit}"
+        effort="${arm_joints_effort_limit}"
         velocity="${arm_joints_velocity_limit}"/>
       <axis xyz="0 -1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>

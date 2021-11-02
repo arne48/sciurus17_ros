@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="sciurus17_right_hand" 
+  <xacro:macro name="sciurus17_right_hand"
     params="hand_joints_lower_limit
             hand_joints_upper_limit
             hand_joints_effort_limit
@@ -14,14 +14,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_Link7.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_Link7.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_Link7.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_Link7.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -35,10 +35,10 @@
       <parent link="r_link7" />
       <child link="r_handA_link" />
       <origin xyz="0.012 -0.024 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${hand_joints_lower_limit}" 
-        upper="${hand_joints_upper_limit}" 
-        effort="${hand_joints_effort_limit}" 
+      <limit
+        lower="${hand_joints_lower_limit}"
+        upper="${hand_joints_upper_limit}"
+        effort="${hand_joints_effort_limit}"
         velocity="${hand_joints_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
@@ -49,14 +49,14 @@
         <!--origin rpy="3.14159 0 0" xyz="0.0 0.0 0.0"/-->
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_HandA.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_HandA.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_HandA.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_HandA.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -70,10 +70,10 @@
       <parent link="r_link7" />
       <child link="r_handB_link" />
       <origin xyz="-0.012 -0.024 0.0" rpy="0 0 0"/>
-      <limit 
-        lower="${hand_joints_lower_limit}" 
-        upper="${hand_joints_upper_limit}" 
-        effort="${hand_joints_effort_limit}" 
+      <limit
+        lower="${hand_joints_lower_limit}"
+        upper="${hand_joints_upper_limit}"
+        effort="${hand_joints_effort_limit}"
         velocity="${hand_joints_velocity_limit}"/>
       <axis xyz="0 0 -1"/>
       <mimic joint="r_hand_joint" multiplier="1" offset="0"/>
@@ -85,14 +85,14 @@
         <!-- origin rpy="3.14159 0 0" xyz="0.0 0.0 0.0"/ -->
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/visual/R_HandB.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/visual/R_HandB.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://sciurus17_description/meshes/collision/R_HandB.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://sciurus17_description/meshes/sciurus17/collision/R_HandB.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
