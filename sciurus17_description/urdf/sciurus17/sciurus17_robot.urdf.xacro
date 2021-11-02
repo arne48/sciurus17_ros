@@ -8,13 +8,6 @@
   <xacro:include filename="$(find sciurus17_description)/urdf/sciurus17/sciurus17_left_arm.xacro"/>
   <xacro:include filename="$(find sciurus17_description)/urdf/sciurus17/sciurus17_left_hand.xacro"/>
 
-  <material name="white">
-    <color rgba="0.9 0.9 0.9 1.0"/>
-  </material>
-  <material name="red">
-    <color rgba="0.8984375 0.0 0.0703125 1"/>
-  </material>
-
   <xacro:property name="EFFORT_LIMIT" value="4.0"/>
   <xacro:property name="VELOCITY_LIMIT" value="5.969211435"/>
 
@@ -67,14 +60,6 @@
         <xacro:default_transmission joint_name="neck_pitch_joint"/>
       </xacro:if>
     </xacro:if>
-
-    <!-- Used for fixing robot 'base_link'  to Gazebo 'world' -->
-    <link name="world"/>
-
-    <joint name="base_link_to_world_joint" type="fixed">
-      <parent link="world"/>
-      <child link="base_link"/>
-    </joint>
 
     <xacro:sciurus17_body
       waist_yaw_upper_limit="${radians(-110)}"
