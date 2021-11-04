@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
 <launch>
-
   <!-- Gazebo configurations-->
   <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
-  <arg name="use_rviz" default="false"/>
+
+  <arg name="use_rviz" default="true"/>
   <arg name="use_effort_right_arm" default="false"/>
   <arg name="use_effort_left_wrist" default="false"/>
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17_with_vehicle.urdf.xacro' use_gazebo_simulation:=true"/>
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-    <param name="publish_frequency" type="double" value="50.0" />
-  </node>
 
   <include file="$(find sciurus17_control)/launch/sciurus17_fake_control.launch">
     <arg name="use_effort_right_arm" value="$(arg use_effort_right_arm)"/>
@@ -36,11 +33,10 @@
 
   <node name="initpose_sciurus17" pkg="sciurus17_gazebo" type="initpose_sciurus17.py"/>
 
-  <!-- TODO MoveIt not happy yet robot_state_publisher might not be needed once planning works
   <include file="$(find sciurus17_moveit_config)/launch/sciurus17_planning.launch">
     <arg name="use_gazebo" value="true"/>
     <arg name="load_robot_description" value="false"/>
     <arg name="use_rviz" value="$(arg use_rviz)"/>
-  </include>-->
+  </include>
 
 </launch>
