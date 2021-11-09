@@ -16,39 +16,31 @@ ROS Wiki:
 [https://wiki.ros.org/sciurus17](https://wiki.ros.org/sciurus17)
 
 Examples:  
-[sciurus17_examples](https://github.com/rt-net/sciurus17_ros/tree/master/sciurus17_examples)
+[sciurus17_examples](https://github.com/rt-net/sciurus17_ros/tree/master/sciurus17_examples/README.en.md)
 
 ## System Requirements
 
-These packages have been developed and tested on ROS Kinetic & Melodic.
+These packages have been developed and tested on ROS Melodic & Noetic.
 Please see below for details.
 
-- ROS Kinetic
-  - OS: Ubuntu 16.04.5 LTS
-  - ROS Distribution: Kinetic Kame 1.12.14
-  - Rviz 1.12.17
-  - MoveIt! 0.9.17
-  - Gazebo 7.0.0
 - ROS Melodic
   - OS: Ubuntu 18.04.3 LTS
-  - ROS Distribution: Melodic Morenia 1.14.3
-  - Rviz 1.12.16
-  - MoveIt! 1.13.3
+  - ROS Distribution: Melodic Morenia 1.14.9
+  - Rviz 1.13.19
+  - MoveIt 1.0.8
   - Gazebo 9.0.0
-  
+- ROS Noetic
+  - OS: Ubuntu 20.04.3 LTS
+  - ROS Distribution: Noetic Ninjemys 1.15.8
+  - Rviz 1.14.10
+  - MoveIt 1.1.5
+  - Gazebo 11.5.1
+
 ## Installation
 
 ### Build from source
 
-- Install ROS environments. Please see [ROS Wiki](http://wiki.ros.org/melodic/Installation/Ubuntu).
-
-- Install [Intel RealSense SDK 2.0](https://github.com/IntelRealSense/librealsense).
-  - Please refer to [installation documents](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md) 
-  to install SDK(librealsense2-\*).
-
-- Download and build a ROS package [realsense2_camera](http://wiki.ros.org/realsense2_camera).
-  - `sciurus17_ros` supports the package version 2.2.0. Please refer to [`Releases`](https://github.com/IntelRealSense/realsense-ros/releases) for the package version.
-  - Please select correct versions of *librealsense* and *realsense2_camera*.
+- Install ROS environments. Please see [ROS Wiki](http://wiki.ros.org/noetic/Installation/Ubuntu).
 
 - Download the packages for Sciurus17 using `git`.
 
@@ -62,9 +54,6 @@ Please see below for details.
   ```bash
   cd ~/catkin_ws/src
 
-  # package for sciurus17_gazebo
-  git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
-
   rosdep install -r -y --from-paths . --ignore-src
   ```
 
@@ -75,11 +64,7 @@ Please see below for details.
   source ~/catkin_ws/devel/setup.bash
   ```
 
-**NOTE:** Please refer to 
-[sciurus17_examples/README.md](./sciurus17_examples/README.md)
-to install OpenCV for image processing examples execution.
-
-## Device Setup
+### Device Setup
 
 Apply udev rules with the following commands to enable communication between `sciurus17_control` and Sciurus17.
 
@@ -115,13 +100,13 @@ At shutdown, this package decreases PID gains of the servo motors to stop motion
 ### sciurus17_description
 
 This package defines Sciurus17 model data including links and joints.
-The MoveIt! packages and Gazebo require this package.
+The MoveIt packages and Gazebo require this package.
 
 ### sciurus17_moveit_config
 
-This package includes configuration files for MoveIt!.
+This package includes configuration files for MoveIt.
 
-To launch the MoveIt! demonstration with Rviz:
+To launch the MoveIt demonstration with Rviz:
 
 ```bash
 roslaunch sciurus17_moveit_config demo.launch
@@ -164,7 +149,7 @@ roslaunch sciurus17_gazebo sciurus17_with_table.launch
 ### sciurus17_examples
 
 This package includes example codes for Sciurus17.
-Please refer to [./sciurus17_examples/README.md](./sciurus17_examples/README.md).
+Please refer to [./sciurus17_examples/README.en.md](./sciurus17_examples/README.en.md).
 
 ### Proprietary Rights
 
