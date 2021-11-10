@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <launch>
+  <!-- Robot Configuration-->
+  <arg name="use_vehicle" default="true"/>
+
   <!-- Gazebo configurations-->
   <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
@@ -37,6 +40,7 @@
     <arg name="use_gazebo" value="true"/>
     <arg name="load_robot_description" value="false"/>
     <arg name="use_rviz" value="$(arg use_rviz)"/>
+    <arg name="use_vehicle" value="$(arg use_vehicle)"/>
   </include>
 
 </launch>

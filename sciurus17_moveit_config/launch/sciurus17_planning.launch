@@ -5,6 +5,7 @@
   <arg name="use_gazebo" default="false" />
   <arg name="load_robot_description" default="true" />
   <arg name="use_rviz" default="true" />
+  <arg name="use_vehicle" default="true" />
 
   <!--
   By default, hide joint_state_publisher's GUI
@@ -15,11 +16,6 @@
   This corresponds to moving around the real robot without the use of MoveIt.
   -->
   <arg name="use_gui" default="false" />
-
-  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <include file="$(find sciurus17_moveit_config)/launch/planning_context.launch">
-    <arg name="load_robot_description" value="$(arg load_robot_description)"/>
-  </include>
 
   <!-- If needed, broadcast static tf for robot root -->
 
@@ -46,6 +42,8 @@
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
     <arg name="use_gazebo" value="$(arg use_gazebo)" />
+    <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+    <arg name="use_vehicle" value="$(arg use_vehicle)"/>
   </include>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
