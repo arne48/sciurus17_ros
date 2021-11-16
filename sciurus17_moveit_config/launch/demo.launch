@@ -8,6 +8,10 @@
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
 
+  <!-- By default, we will load or override the robot_description -->
+  <arg name="load_robot_description" default="true"/>
+
+
   <!--
   By default, hide joint_state_publisher's GUI
 
@@ -17,11 +21,6 @@
   This corresponds to moving around the real robot without the use of MoveIt.
   -->
   <arg name="use_gui" default="false" />
-
-  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <include file="$(find sciurus17_moveit_config)/launch/planning_context.launch">
-    <arg name="load_robot_description" value="true"/>
-  </include>
 
   <!-- If needed, broadcast static tf for robot root -->
 
@@ -47,6 +46,8 @@
     <arg name="fake_execution" value="false"/>
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
+    <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+    <arg name="use_vehicle" value="false"/>
   </include>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
