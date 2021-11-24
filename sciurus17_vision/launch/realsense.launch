@@ -32,6 +32,8 @@
 
   <remap from="depth/color/points"        to="depth_registered/points"/>
 
+  <node name="reset_realsense" pkg="sciurus17_tools" type="realsense_hwreset"/>
+
   <include file="$(find realsense2_camera)/launch/rs_camera.launch">
     <arg name="serial_no"                 value="$(arg serial_no)"/>
     <arg name="json_file_path"            value="$(arg json_file_path)"/>
