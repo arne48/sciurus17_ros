@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <group ns="chest_camera_node">
     <node pkg="libuvc_camera" type="camera_node" name="chest_camera_node" output="screen">
@@ -24,4 +25,3 @@
     </node>
   </group>
 </launch>
-
