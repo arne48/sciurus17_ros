@@ -5,7 +5,11 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
+  geometry_msgs
 )
+
+catkin_python_setup()
 
 find_package(realsense2)
 if(NOT realsense2_FOUND)
@@ -15,6 +19,8 @@ endif()
 catkin_package(
   CATKIN_DEPENDS
     roscpp
+    rospy
+    geometry_msgs
 )
 
 include_directories(
@@ -34,4 +40,9 @@ install(TARGETS realsense_hwreset
 )
 
 install(DIRECTORY scripts rules DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+catkin_install_python(PROGRAMS
+  src/sciurus_vehicle_teleop_key.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
