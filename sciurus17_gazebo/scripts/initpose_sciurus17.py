@@ -1,28 +1,47 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import roslib
 import rospy
-from gazebo_msgs.srv import SetModelConfiguration
-from gazebo_msgs.srv import SetModelConfigurationRequest
-from std_srvs.srv import Empty
+from trajectory_msgs.msg import JointTrajectory
+from trajectory_msgs.msg import JointTrajectoryPoint
 
-rospy.wait_for_service('/gazebo/unpause_physics', timeout=120)
-rospy.wait_for_service('/gazebo/set_model_configuration', timeout=120)
-unpause_physics = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
-initialize_joints =  rospy.ServiceProxy('/gazebo/set_model_configuration', SetModelConfiguration)
 
-rospy.sleep(5.0)
+def send_trajectory(publisher, trajectory):
+    msg = JointTrajectory()
+    msg.header.stamp = rospy.Time.now()
 
-pose_req = SetModelConfigurationRequest()
-pose_req.model_name = 'sciurus17'
-pose_req.urdf_param_name = '/sciurus17/robot_description'
-pose_req.joint_names =     [ 'waist_yaw_joint', 'neck_yaw_joint', 'neck_pitch_joint', \
-                             'r_arm_joint1', 'r_arm_joint2', 'r_arm_joint3', 'r_arm_joint4', 'r_arm_joint5', 'r_arm_joint6', 'r_arm_joint7', 'l_hand_joint', \
-                             'l_arm_joint1', 'l_arm_joint2', 'l_arm_joint3', 'l_arm_joint4', 'l_arm_joint5', 'l_arm_joint6', 'l_arm_joint7', 'r_hand_joint' ]
-pose_req.joint_positions = [  0.0,  0.0,  0.0, \
-                                    -0.3574, -1.5707,  0.0,  2.7262,  0.0,  -1.1554,  0.0,  0.0, \
-                                    0.3574, 1.5707,  0.0,  -2.7262,  0.0,  1.1554,  0.0,  0.0]
-res = initialize_joints( pose_req )
+    msg.joint_names = [x[0] for x in trajectory]
+    point = JointTrajectoryPoint()
+    point.positions = [x[1] for x in trajectory]
+    point.time_from_start = rospy.Duration(1)
+    msg.points = [point]
 
-res = unpause_physics()
+    publisher.publish(msg)
+
+
+def main():
+    rospy.init_node("initial_traj_node")
+    right_arm_home_pose = [('r_arm_joint1', -0.3574), ('r_arm_joint2', -1.5707), ('r_arm_joint3', 0.0),
+                           ('r_arm_joint4', 2.67), ('r_arm_joint5', 0.0), ('r_arm_joint6', -1.1554),
+                           ('r_arm_joint7', 0.0)]
+    left_arm_home_pose = [('l_arm_joint1', 0.3574), ('l_arm_joint2', 1.5707), ('l_arm_joint3', 0.0),
+                          ('l_arm_joint4', -2.67), ('l_arm_joint5', 0.0), ('l_arm_joint6', 1.1554),
+                          ('l_arm_joint7', 0.0)]
+
+    right_arm_joint_trajectory_publisher = rospy.Publisher('/sciurus17/controller1/right_arm_controller/command',
+                                                           JointTrajectory, queue_size=10)
+    left_arm_joint_trajectory_publisher = rospy.Publisher('/sciurus17/controller2/left_arm_controller/command',
+                                                          JointTrajectory, queue_size=10)
+
+    rospy.sleep(3.0)
+
+    send_trajectory(right_arm_joint_trajectory_publisher, right_arm_home_pose)
+    send_trajectory(left_arm_joint_trajectory_publisher, left_arm_home_pose)
+
+
+if __name__ == '__main__':
+    try:
+        if not rospy.is_shutdown():
+            main()
+    except rospy.ROSInterruptException:
+        pass
