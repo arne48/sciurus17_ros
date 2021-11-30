@@ -53,4 +53,8 @@ CATKIN_IGNORE
 *.swp
 
 # MacOS metadata files
+
+# JetBrains IDEs files
+*/.idea
+*/cmake-build-debug
 .DS_store
