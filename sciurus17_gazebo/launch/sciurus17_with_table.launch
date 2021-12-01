@@ -43,6 +43,6 @@
     <arg name="use_vehicle" value="$(arg use_vehicle)"/>
   </include>
 
-  <node name="initpose_sciurus17" pkg="sciurus17_gazebo" type="initpose_sciurus17.py"/>
+  <node name="initpose_sciurus17" pkg="sciurus17_bringup" type="initpose_sciurus17.py"/>
 
 </launch>
