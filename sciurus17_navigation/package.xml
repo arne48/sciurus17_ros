@@ -5,7 +5,7 @@
   <description>
     The sciurus17_navigation package provides roslaunch scripts for starting the navigation program.
   </description>
-  <license>Apache 2.0</license>
+  <license>NON-COMMERCIAL LICENSE AGREEMENT</license>
   <author email="maeda@rt-net.jp">Maeda</author>
   <maintainer email="maeda@rt-net.jp">Maeda</maintainer>
   <buildtool_depend>catkin</buildtool_depend>
