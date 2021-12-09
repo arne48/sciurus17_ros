@@ -9,8 +9,6 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
 )
 
-catkin_python_setup()
-
 find_package(realsense2)
 if(NOT realsense2_FOUND)
     message(FATAL_ERROR "\n\n Intel RealSense SDK 2.0 is missing, please install it from https://github.com/IntelRealSense/librealsense/releases\n\n")
@@ -45,4 +43,3 @@ catkin_install_python(PROGRAMS
   src/sciurus_vehicle_teleop_key.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
-
