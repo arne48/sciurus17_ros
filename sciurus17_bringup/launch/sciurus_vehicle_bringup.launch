@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="vehicle_only" default="true" />
+
+    <!--run sciurus_vehicle_core(OpenCR)-->
+    <node pkg="rosserial_python" type="serial_node.py" name="sciurus_vehicle_core" output="screen">
+      <param name="port" value="/dev/sciurus_vehicle_core"/>
+      <param name="baud" value="115200"/>
+      <param name="tf_prefix" value=""/>
+    </node>
+
+    <!--run urg_node -->
+    <node pkg="urg_node" type="urg_node" name="urg_node">
+      <param name="serial_port" value="/dev/urg"/>
+      <param name="frame_id" value="base_scan"/>
+      <param name="angle_min" value="-1.483529864"/>
+      <param name="angle_max" value="1.483529864"/>
+    </node>
+
+    <!--Load robot_description-->
+    <include file="$(find sciurus17_bringup)/launch/includes/description.launch" if="$(arg vehicle_only)"/>
+
+    <!--run robot state publisher-->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="vehicle_robot_state_publisher" if="$(arg vehicle_only)">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="vehicle_joint_state_publisher">
+      <param name="rate" value="50"/>
+    </node>
+
+</launch>

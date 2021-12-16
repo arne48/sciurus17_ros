@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+  <!-- Robot Configuration-->
+  <arg name="use_vehicle" default="false"/>
+
   <!-- Gazebo configurations-->
-  <arg name="paused" default="true"/>
+  <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
@@ -27,7 +30,7 @@
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description"
-    command="$(find xacro)/xacro '$(find sciurus17_description)/urdf/sciurus17.urdf.xacro' use_gazebo_simulation:=true"/>
+    command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17.urdf.xacro' use_gazebo_simulation:=true"/>
 
  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
@@ -37,8 +40,9 @@
     <arg name="use_gazebo" value="true"/>
     <arg name="load_robot_description" value="false"/>
     <arg name="use_rviz" value="$(arg use_rviz)"/>
+    <arg name="use_vehicle" value="$(arg use_vehicle)"/>
   </include>
 
-  <node name="initpose_sciurus17" pkg="sciurus17_gazebo" type="initpose_sciurus17.py"/>
+  <node name="initpose_sciurus17" pkg="sciurus17_bringup" type="initpose_sciurus17.py"/>
 
 </launch>

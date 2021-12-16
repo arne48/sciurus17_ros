@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="caster_trans" params="prefix interface">
+  <transmission name="caster_wheel_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="caster_wheel_left_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  </xacro:macro>
+</robot>

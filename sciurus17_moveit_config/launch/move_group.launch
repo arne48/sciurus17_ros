@@ -1,12 +1,18 @@
 <launch>
+  <arg name="load_robot_description" default="true" />
+  <arg name="use_vehicle" default="true" />
 
-  <include file="$(find sciurus17_moveit_config)/launch/planning_context.launch" />
+  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+  <include file="$(find sciurus17_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+    <arg name="use_vehicle" value="$(arg use_vehicle)"/>
+  </include>
 
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
   <arg     if="$(arg debug)" name="launch_prefix"
-	   value="gdb -x $(find sciurus17_moveit_config)/launch/gdb_settings.gdb --ex run --args" />
+	   value="xterm -e gdb -x $(find sciurus17_moveit_config)/launch/gdb_settings.gdb --ex run --args" />
 
   <!-- Verbose Mode Option -->
   <arg name="info" default="$(arg debug)" />
@@ -14,6 +20,7 @@
   <arg     if="$(arg info)" name="command_args" value="--debug" />
 
   <!-- move_group settings -->
+  <arg name="pipeline" default="ompl" />
   <arg name="allow_trajectory_execution" default="true"/>
   <arg name="fake_execution" default="false"/>
   <arg name="max_safe_path_cost" default="1"/>
@@ -26,9 +33,17 @@
   <arg unless="$(arg use_gazebo)" name="exec_moveit_controllers" value="true"/>
 
   <!-- Planning Functionality -->
-  <include ns="move_group" file="$(find sciurus17_moveit_config)/launch/planning_pipeline.launch.xml">
-    <arg name="pipeline" value="ompl" />
-  </include>
+  <group ns="move_group/planning_pipelines">
+    <!-- OMPL -->
+    <include ns="ompl" file="$(find sciurus17_moveit_config)/launch/planning_pipeline.launch.xml">
+      <arg name="pipeline" value="ompl" />
+    </include>
+
+    <!-- CHOMP -->
+    <include ns="chomp" file="$(find sciurus17_moveit_config)/launch/planning_pipeline.launch.xml">
+      <arg name="pipeline" value="chomp" />
+    </include>
+  </group>
 
   <!-- Trajectory Execution Functionality -->
   <include ns="move_group" file="$(find sciurus17_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
@@ -50,6 +65,7 @@
     <param name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <param name="max_safe_path_cost" value="$(arg max_safe_path_cost)"/>
     <param name="jiggle_fraction" value="$(arg jiggle_fraction)" />
+    <param name="default_planning_pipeline" value="$(arg pipeline)" />
 
     <!-- load these non-default MoveGroup capabilities -->
     <!--
@@ -59,7 +75,7 @@
                   " />
     -->
 
-    
+
 
     <!-- inhibit these default MoveGroup capabilities -->
     <!--

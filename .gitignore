@@ -54,3 +54,7 @@ CATKIN_IGNORE
 
 # MacOS metadata files
 .DS_store
+
+# JetBrains IDEs files
+*/.idea
+*/cmake-build-debug

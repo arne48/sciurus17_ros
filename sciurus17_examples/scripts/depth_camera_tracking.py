@@ -48,7 +48,7 @@ class ObjectTracker:
     def _image_callback(self, ros_image):
         try:
             input_image = self._bridge.imgmsg_to_cv2(ros_image, "bgr8")
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logerr(e)
             return
 
@@ -58,10 +58,10 @@ class ObjectTracker:
     def _depth_callback(self, ros_image):
         try:
             input_image = self._bridge.imgmsg_to_cv2(ros_image, "passthrough")
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logerr(e)
             return
-            
+
         # 画像のwidth, heightを取得
         self._image_shape.x = input_image.shape[1]
         self._image_shape.y = input_image.shape[0]
@@ -147,17 +147,17 @@ class ObjectTracker:
             if len(rects) > 0:
                 # 最も大きい長方形を抽出
                 rect = max(rects, key=(lambda x: x[2] * x[3]))
-            
+
                 rect_size = rect[2] * rect[3]
-            
+
                 # 長方形の大きさが指定範囲内であるかチェック
                 if rect_size > MIN_OBJECT_SIZE and rect_size < MAX_OBJECT_SIZE:
                     # 抽出した長方形を画像に描画する
-                    cv2.rectangle(output_image, 
-                            (rect[0], rect[1]), 
-                            (rect[0] + rect[2], rect[1] + rect[3]), 
+                    cv2.rectangle(output_image,
+                            (rect[0], rect[1]),
+                            (rect[0] + rect[2], rect[1] + rect[3]),
                             RECT_COLOR[i], thickness=2)
-            
+
                     self._object_rect = rect
                     self._object_detected = True
 
@@ -169,7 +169,7 @@ class ObjectTracker:
                     self._median_depth =  int(np.median(object_depth))
 
                     # 中央値のテキストを出力画像に描画する
-                    cv2.putText(output_image, str(self._median_depth), 
+                    cv2.putText(output_image, str(self._median_depth),
                             (rect[0], rect[1]+30),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             1, RECT_COLOR[i], 2)
@@ -188,7 +188,7 @@ class NeckYawPitch(object):
             rospy.signal_shutdown("Action Server not found")
             sys.exit(1)
 
-        self._state_sub = rospy.Subscriber("/sciurus17/controller3/neck_controller/state", 
+        self._state_sub = rospy.Subscriber("/sciurus17/controller3/neck_controller/state",
                 JointTrajectoryControllerState, self._state_callback, queue_size=1)
 
         self._state_received = False
@@ -257,7 +257,7 @@ def main():
     # 首の制御角度リミット値 Degree
     MAX_YAW_ANGLE   = 120
     MIN_YAW_ANGLE   = -120
-    MAX_PITCH_ANGLE = 80
+    MAX_PITCH_ANGLE = 50
     MIN_PITCH_ANGLE = -70
 
     # 首の制御量
@@ -336,4 +336,3 @@ if __name__ == '__main__':
     object_tracker = ObjectTracker()
 
     main()
-

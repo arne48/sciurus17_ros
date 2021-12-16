@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find sciurus17_description)/robots/vehicle_only.urdf.xacro'"/>
+    <param name="robot_description" command="$(arg urdf_file)" />
+</launch>

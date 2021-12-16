@@ -43,9 +43,9 @@ class ObjectTracker:
     def _image_callback(self, ros_image):
         try:
             input_image = self._bridge.imgmsg_to_cv2(ros_image, "bgr8")
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logerr(e)
-            
+
         # 画像のwidth, heightを取得
         self._image_shape.x = input_image.shape[1]
         self._image_shape.y = input_image.shape[0]
@@ -117,9 +117,9 @@ class ObjectTracker:
             # 長方形が小さければ検出判定にしない
             if rect[2] * rect[3] > MIN_OBJECT_SIZE:
                 # 抽出した長方形を画像に描画する
-                cv2.rectangle(bgr_image, 
-                        (rect[0], rect[1]), 
-                        (rect[0] + rect[2], rect[1] + rect[3]), 
+                cv2.rectangle(bgr_image,
+                        (rect[0], rect[1]),
+                        (rect[0] + rect[2], rect[1] + rect[3]),
                         (0, 0, 255), thickness=2)
 
                 self._object_rect = rect
@@ -172,7 +172,7 @@ class ObjectTracker:
         for small_face in small_faces:
             # 顔の領域を元のサイズに戻す
             face = small_face*SCALE
-            
+
             # グレー画像から顔部分を抽出
             roi_gray = gray[
                     face[1]:face[1]+face[3],
@@ -183,9 +183,9 @@ class ObjectTracker:
 
             # 目を検出したら、対象のrect(座標と大きさ)を記録する
             if len(eyes) > 0:
-                cv2.rectangle(bgr_image, 
-                        (face[0],face[1]), 
-                        (face[0]+face[2], face[1]+face[3]), 
+                cv2.rectangle(bgr_image,
+                        (face[0],face[1]),
+                        (face[0]+face[2], face[1]+face[3]),
                         (0,0,255),2)
 
                 self._object_rect = face
@@ -205,7 +205,7 @@ class NeckYawPitch(object):
             rospy.signal_shutdown("Action Server not found")
             sys.exit(1)
 
-        self._state_sub = rospy.Subscriber("/sciurus17/controller3/neck_controller/state", 
+        self._state_sub = rospy.Subscriber("/sciurus17/controller3/neck_controller/state",
                 JointTrajectoryControllerState, self._state_callback, queue_size=1)
 
         self._state_received = False
@@ -274,7 +274,7 @@ def main():
     # 首の制御角度リミット値 Degree
     MAX_YAW_ANGLE   = 120
     MIN_YAW_ANGLE   = -120
-    MAX_PITCH_ANGLE = 80
+    MAX_PITCH_ANGLE = 50
     MIN_PITCH_ANGLE = -70
 
     # 首の制御量
@@ -353,4 +353,3 @@ if __name__ == '__main__':
     object_tracker = ObjectTracker()
 
     main()
-

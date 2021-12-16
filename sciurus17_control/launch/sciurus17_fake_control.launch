@@ -7,7 +7,7 @@
     <param if="$(arg use_effort_right_arm)" name="right_arm_controller/type" value="effort_controllers/JointTrajectoryController" />
 
     <param name="robot_description"
-      command="$(find xacro)/xacro '$(find sciurus17_description)/urdf/sciurus17.urdf.xacro'
+      command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17.urdf.xacro'
                use_gazebo_simulation:=true
                load_trans1:=true
                use_effort_right_arm:=$(arg use_effort_right_arm)"/>
@@ -24,7 +24,7 @@
     <rosparam file="$(find sciurus17_control)/config/sciurus17_fake_control2.yaml" command="load"/>
 
     <param name="robot_description"
-      command="$(find xacro)/xacro '$(find sciurus17_description)/urdf/sciurus17.urdf.xacro'
+      command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17.urdf.xacro'
                use_gazebo_simulation:=true
                load_trans2:=true
                use_effort_left_wrist:=$(arg use_effort_left_wrist)"/>
@@ -52,7 +52,7 @@
     <rosparam file="$(find sciurus17_control)/config/sciurus17_fake_control3.yaml" command="load"/>
 
     <param name="robot_description"
-      command="$(find xacro)/xacro '$(find sciurus17_description)/urdf/sciurus17.urdf.xacro' use_gazebo_simulation:=true load_trans3:=true"/>
+      command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17.urdf.xacro' use_gazebo_simulation:=true load_trans3:=true"/>
     <node name="controller_manager3"
         pkg="controller_manager"
         type="spawner" respawn="false"

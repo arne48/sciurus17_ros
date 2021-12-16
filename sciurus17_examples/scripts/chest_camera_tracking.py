@@ -36,9 +36,9 @@ class ObjectTracker:
     def _image_callback(self, ros_image):
         try:
             input_image = self._bridge.imgmsg_to_cv2(ros_image, "bgr8")
-        except CvBridgeError, e:
+        except CvBridgeError as e:
             rospy.logerr(e)
-            
+
         # 画像のwidth, heightを取得
         self._image_shape.x = input_image.shape[1]
         self._image_shape.y = input_image.shape[0]
@@ -109,9 +109,9 @@ class ObjectTracker:
             # 長方形が小さければ検出判定にしない
             if rect[2] * rect[3] > MIN_OBJECT_SIZE:
                 # 抽出した長方形を画像に描画する
-                cv2.rectangle(bgr_image, 
-                        (rect[0], rect[1]), 
-                        (rect[0] + rect[2], rect[1] + rect[3]), 
+                cv2.rectangle(bgr_image,
+                        (rect[0], rect[1]),
+                        (rect[0] + rect[2], rect[1] + rect[3]),
                         (0, 0, 255), thickness=2)
 
                 self._object_rect = rect
@@ -150,7 +150,7 @@ class WaistYaw(object):
             rospy.signal_shutdown("Action Server not found")
             sys.exit(1)
 
-        self._state_sub = rospy.Subscriber("/sciurus17/controller3/waist_yaw_controller/state", 
+        self._state_sub = rospy.Subscriber("/sciurus17/controller3/waist_yaw_controller/state",
                 JointTrajectoryControllerState, self._state_callback, queue_size=1)
 
         self._state_received = False
@@ -163,7 +163,7 @@ class WaistYaw(object):
         yaw_radian = state.actual.positions[0]
         self._current_yaw = math.degrees(yaw_radian)
 
-    
+
     def state_received(self):
         return self._state_received
 
@@ -185,7 +185,7 @@ class WaistYaw(object):
         self.__client.send_goal(goal)
         self.__client.wait_for_result(rospy.Duration(0.1))
         return self.__client.get_result()
-    
+
 
 def hook_shutdown():
     # shutdown時に0度へ戻る
@@ -268,4 +268,3 @@ if __name__ == '__main__':
     object_tracker = ObjectTracker()
 
     main()
-

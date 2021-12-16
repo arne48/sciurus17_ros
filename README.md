@@ -22,32 +22,24 @@ ROSのサンプルコード集はこちらです。
 
 以下の環境にて動作確認を行っています。
 
-- ROS Kinetic
-  - OS: Ubuntu 16.04.5 LTS
-  - ROS Distribution: Kinetic Kame 1.12.14
-  - Rviz 1.12.17
-  - MoveIt! 0.9.17
-  - Gazebo 7.0.0
 - ROS Melodic
   - OS: Ubuntu 18.04.3 LTS
-  - ROS Distribution: Melodic Morenia 1.14.3
-  - Rviz 1.12.16
-  - MoveIt! 1.13.3
+  - ROS Distribution: Melodic Morenia 1.14.9
+  - Rviz 1.13.19
+  - MoveIt 1.0.8
   - Gazebo 9.0.0
+- ROS Noetic
+  - OS: Ubuntu 20.04.3 LTS
+  - ROS Distribution: Noetic Ninjemys 1.15.8
+  - Rviz 1.14.10
+  - MoveIt 1.1.5
+  - Gazebo 11.5.1
   
 ## インストール方法
 
 ### ソースからビルドする方法
 
-- [ROS Wiki](http://wiki.ros.org/ja/kinetic/Installation/Ubuntu)を参照しROSをインストールします。
-
-- [Intel RealSense SDK 2.0](https://github.com/IntelRealSense/librealsense)をインストールします。
-  - [公式ページの手順](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md)に
-  従って、SDK(librealsense2-*)をインストールしてください。
-
-- ROSパッケージ[realsense2_camera](http://wiki.ros.org/realsense2_camera)をダウンロード&ビルドします。
-  - ver 2.2.0に対応しています。詳しくは[`Releases`](https://github.com/IntelRealSense/realsense-ros/releases)を参照してください。
-  - **librealsenseとrealsense2_cameraが対応するように適切なバージョンを使用してください**
+- [ROS Wiki](http://wiki.ros.org/ja/noetic/Installation/Ubuntu)を参照しROSをインストールします。
 
 - 本パッケージをダウンロードします。
 
@@ -61,9 +53,6 @@ ROSのサンプルコード集はこちらです。
   ```bash
   cd ~/catkin_ws/src
 
-  # package for sciurus17_gazebo
-  git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
-
   rosdep install -r -y --from-paths . --ignore-src
   ```
 
@@ -73,15 +62,8 @@ ROSのサンプルコード集はこちらです。
   cd ~/catkin_ws && catkin_make
   source ~/catkin_ws/devel/setup.bash
   ```
-※画像処理を行うサンプルを動かすためには
-[sciurus17_examples/README.md](./sciurus17_examples/README.md)
-に従ってOpenCVをインストールして下さい。
 
-### `apt`を使用してインストールする方法
-
-後日提供予定です。
-
-## セットアップ方法
+### 通信機器のセットアップ
 
 次の方法で`sciurus17_control`が実機と通信するために用いるUSBシリアル変換デバイス名を固定します。
 
@@ -116,11 +98,11 @@ dynamixel_sdkのC++ライブラリが必要です。
 ### sciurus17_description
 
 Sciurus17のモデルデータやリンクとジョイントの構成を定義するパッケージです。
-MoveIt!やGazeboから呼び出されます。
+MoveItやGazeboから呼び出されます。
 
 ### sciurus17_moveit_config
 
-MoveIt!のパッケージです。下記のコマンドで起動します。
+MoveItのパッケージです。下記のコマンドで起動します。
 
 ```bash
 roslaunch sciurus17_moveit_config demo.launch
