@@ -5,8 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /RobotModel1/Status1
         - /TF1/Frames1
+        - /LaserScan1
         - /Map1
       Splitter Ratio: 0.594406008720398
     Tree Height: 866
@@ -28,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -73,7 +73,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        base_scan:
+        base_scan_back:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_scan_front:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -83,6 +88,14 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         camera_link:
           Alpha: 1
           Show Axes: false
@@ -300,7 +313,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.030000001192092896
       Style: Flat Squares
-      Topic: /sciurus_vehicle/scan
+      Topic: /base_scan_front
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -331,7 +344,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_scan
+    Fixed Frame: base_scan_front
     Frame Rate: 30
   Name: root
   Tools:

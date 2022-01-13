@@ -34,6 +34,7 @@
     <param name="llsamplestep" value="0.01"/>
     <param name="lasamplerange" value="0.005"/>
     <param name="lasamplestep" value="0.005"/>
+    <remap from="scan" to="base_scan_front"/>
   </node>
 
   <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find sciurus17_navigation)/rviz/sciurus_vehicle_gmapping.rviz"/>
