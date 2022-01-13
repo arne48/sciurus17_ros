@@ -224,7 +224,7 @@
 
   <gazebo reference="base_scan_front">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
+    <sensor type="ray" name="base_scan_front">
       <always_on>true</always_on>
       <update_rate>10</update_rate>
       <pose>0 0 0 0 0 0</pose>
@@ -249,7 +249,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_base_scan_front_controller" filename="libgazebo_ros_laser.so">
         <topicName>base_scan_front</topicName>
         <frameName>base_scan_front</frameName>
         <update_rate>10</update_rate>
@@ -259,7 +259,7 @@
 
   <gazebo reference="base_scan_back">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
+    <sensor type="ray" name="base_scan_back">
       <always_on>true</always_on>
       <update_rate>10</update_rate>
       <pose>0 0 0 0 0 0</pose>
@@ -284,7 +284,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_base_scan_back_controller" filename="libgazebo_ros_laser.so">
         <topicName>base_scan_back</topicName>
         <frameName>base_scan_back</frameName>
         <update_rate>10</update_rate>
