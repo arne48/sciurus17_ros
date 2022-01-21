@@ -9,12 +9,22 @@
       <param name="tf_prefix" value=""/>
     </node>
 
-    <!--run urg_node -->
-    <node pkg="urg_node" type="urg_node" name="urg_node">
-      <param name="serial_port" value="/dev/urg"/>
-      <param name="frame_id" value="base_scan"/>
+    <!--run urg_node for front scanner -->
+    <node pkg="urg_node" type="urg_node" name="urg_node_front">
+      <param name="serial_port" value="/dev/serial/by-path/pci-0000:00:14.0-usb-0:3.1:1.0"/>
+      <param name="frame_id" value="base_scan_front"/>
       <param name="angle_min" value="-1.483529864"/>
       <param name="angle_max" value="1.483529864"/>
+      <remap from="scan" to="base_scan_front"/>
+    </node>
+
+    <!--run urg_node for back scanner -->
+    <node pkg="urg_node" type="urg_node" name="urg_node_back">
+      <param name="serial_port" value="/dev/serial/by-path/pci-0000:00:14.0-usb-0:3.2:1.0"/>
+      <param name="frame_id" value="base_scan_back"/>
+      <param name="angle_min" value="-1.483529864"/>
+      <param name="angle_max" value="1.483529864"/>
+      <remap from="scan" to="base_scan_back"/>
     </node>
 
     <!--Load robot_description-->
