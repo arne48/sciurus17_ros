@@ -10,6 +10,7 @@
   <arg name="pointcloud_texture_index"    default="0"/>
   <arg name="enable_sync"                 default="false"/>
   <arg name="align_depth"                 default="true"/>
+  <arg name="ordered_pc"                  default="true"/>
 
   <arg name="depth_width"                 default="640"/>
   <arg name="depth_height"                default="480"/>
@@ -45,6 +46,7 @@
     <arg name="pointcloud_texture_index"  value="$(arg pointcloud_texture_index)"/>
     <arg name="enable_sync"               value="$(arg enable_sync)"/>
     <arg name="align_depth"               value="$(arg align_depth)"/>
+    <arg name="ordered_pc"                value="$(arg ordered_pc)"/>
 
     <arg name="depth_width"               value="$(arg depth_width)"/>
     <arg name="depth_height"              value="$(arg depth_height)"/>
