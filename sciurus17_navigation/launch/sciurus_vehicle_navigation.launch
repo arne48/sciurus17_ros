@@ -2,7 +2,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="model" default="sciurus_vehicle"/>
-  <arg name="map_file" default="$(find sciurus17_navigation)/maps/map_atr_office.yaml"/>
+  <arg name="map_file" default="$(find id_experiments)/maps/experimentation_room.yaml"/>
   <arg name="use_rviz" default="false"/>
 
   <!-- Map server -->
