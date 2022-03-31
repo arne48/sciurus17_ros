@@ -2,41 +2,40 @@
 <launch>
     <arg name="vehicle_only" default="true" />
 
-    <!--run sciurus_vehicle_core(OpenCR)-->
-    <node pkg="rosserial_python" type="serial_node.py" name="sciurus_vehicle_core" output="screen">
-      <param name="port" value="/dev/sciurus_vehicle_core"/>
-      <param name="baud" value="115200"/>
-      <param name="tf_prefix" value=""/>
-    </node>
+    <group ns="sciurus_vehicle">
+      <!--run sciurus_vehicle_core(OpenCR)-->
+      <node pkg="rosserial_python" type="serial_node.py" name="sciurus_vehicle_core" output="screen">
+        <param name="port" value="/dev/sciurus_vehicle_core"/>
+        <param name="baud" value="115200"/>
+        <param name="tf_prefix" value=""/>
+        <remap from="cmd_vel" to="/cmd_vel"/>
+        <remap from="odom" to="/odom"/>
+      </node>
 
-    <!--run urg_node for front scanner -->
-    <node pkg="urg_node" type="urg_node" name="urg_node_front">
-      <param name="serial_port" value="/dev/serial/by-path/pci-0000:00:14.0-usb-0:3.1:1.0"/>
-      <param name="frame_id" value="base_scan_front"/>
-      <param name="angle_min" value="-1.483529864"/>
-      <param name="angle_max" value="1.483529864"/>
-      <remap from="scan" to="base_scan_front"/>
-    </node>
+      <!--run urg_node for front scanner -->
+      <node pkg="urg_node" type="urg_node" name="urg_node_front">
+        <param name="serial_port" value="/dev/serial/by-path/pci-0000:00:14.0-usb-0:3.1:1.0"/>
+        <param name="frame_id" value="base_scan_front"/>
+        <param name="angle_min" value="-1.483529864"/>
+        <param name="angle_max" value="1.483529864"/>
+        <remap from="scan" to="/base_scan_front"/>
+      </node>
 
-    <!--run urg_node for back scanner -->
-    <node pkg="urg_node" type="urg_node" name="urg_node_back">
-      <param name="serial_port" value="/dev/serial/by-path/pci-0000:00:14.0-usb-0:3.2:1.0"/>
-      <param name="frame_id" value="base_scan_back"/>
-      <param name="angle_min" value="-1.483529864"/>
-      <param name="angle_max" value="1.483529864"/>
-      <remap from="scan" to="base_scan_back"/>
-    </node>
+      <!--run urg_node for back scanner -->
+      <node pkg="urg_node" type="urg_node" name="urg_node_back">
+        <param name="serial_port" value="/dev/serial/by-path/pci-0000:00:14.0-usb-0:3.2:1.0"/>
+        <param name="frame_id" value="base_scan_back"/>
+        <param name="angle_min" value="-1.483529864"/>
+        <param name="angle_max" value="1.483529864"/>
+        <remap from="scan" to="/base_scan_back"/>
+      </node>
 
-    <!--Load robot_description-->
-    <include file="$(find sciurus17_bringup)/launch/includes/description.launch" if="$(arg vehicle_only)"/>
+      <!--Load robot_description-->
+      <include file="$(find sciurus17_bringup)/launch/includes/description.launch" if="$(arg vehicle_only)"/>
 
-    <!--run robot state publisher-->
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="vehicle_robot_state_publisher" if="$(arg vehicle_only)">
-      <param name="publish_frequency" type="double" value="50.0" />
-    </node>
-
-    <node pkg="joint_state_publisher" type="joint_state_publisher" name="vehicle_joint_state_publisher">
-      <param name="rate" value="50"/>
-    </node>
-
+      <!--run robot state publisher-->
+      <node pkg="robot_state_publisher" type="robot_state_publisher" name="vehicle_robot_state_publisher" if="$(arg vehicle_only)">
+        <param name="publish_frequency" type="double" value="50.0" />
+      </node>
+    </group>
 </launch>
