@@ -5,7 +5,7 @@
 
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-      <robotNamespace>sciurus_vehicle</robotNamespace>
+      <robotNamespace>/sciurus_vehicle</robotNamespace>
     </plugin>
   </gazebo>
 
@@ -123,6 +123,7 @@
       <wheelAcceleration>10.0</wheelAcceleration>
       <wheelTorque>7000</wheelTorque>
       <rosDebugLevel>na</rosDebugLevel>
+      <robotNamespace>/sciurus_vehicle</robotNamespace>
     </plugin>
   </gazebo>
 
@@ -133,6 +134,7 @@
       </jointName>
       <updateRate>100</updateRate>
       <alwaysOn>true</alwaysOn>
+      <robotNamespace>/sciurus_vehicle</robotNamespace>
     </plugin>
   </gazebo>
 
@@ -219,6 +221,7 @@
           </accel>
         </noise>
       </imu>
+      <robotNamespace>/sciurus_vehicle</robotNamespace>
     </plugin>
   </gazebo>
 

@@ -15,8 +15,9 @@
   <arg name="use_effort_right_arm" default="false"/>
   <arg name="use_effort_left_wrist" default="false"/>
 
-  <!-- Gazebo is publishing the JointStates of the vehicle, this prevents the JointStatePublisher launched in the MoveIt stack from spamming contradicting values-->
-  <rosparam param="/exclude_joints">[wheel_left_joint,wheel_right_joint,caster_body_right_joint,caster_wheel_right_joint,caster_body_left_joint,caster_wheel_left_joint]</rosparam>
+  <!-- Remap cmd_vel and odom into root namespace -->
+  <remap from="/sciurus_vehicle/cmd_vel" to="/cmd_vel"/>
+  <remap from="/sciurus_vehicle/odom" to="/odom"/>
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find sciurus17_description)/robots/sciurus17_with_vehicle.urdf.xacro' use_gazebo_simulation:=true"/>
