@@ -6,11 +6,12 @@
         pkg="controller_manager"
         type="spawner" respawn="false"
         output="screen"
+        launch-prefix="taskset -c 0"
         args="joint_state_controller
               left_arm_controller
               left_hand_controller"/>
 
-    <node name="joints" pkg="sciurus17_control" type="sciurus17_control" output="screen" respawn="false">
+    <node name="joints" pkg="sciurus17_control" type="sciurus17_control" output="screen" respawn="false" launch-prefix="taskset -c 0">
       <rosparam file="$(find sciurus17_control)/config/sciurus17_control2.yaml" command="load"/>
     </node>
   </group>
