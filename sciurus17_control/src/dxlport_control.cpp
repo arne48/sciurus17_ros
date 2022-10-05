@@ -48,7 +48,7 @@ DXLPORT_CONTROL::DXLPORT_CONTROL( ros::NodeHandle handle, CONTROL_SETTING &setti
     writePosGoalGroup= new dynamixel::GroupBulkWrite( portHandler, packetHandler );
     readTempGroup    = new dynamixel::GroupBulkRead( portHandler, packetHandler );
     readIndirectGroup= new dynamixel::GroupBulkRead( portHandler, packetHandler );
-    
+
     for( jj=0 ; jj<joint_num ; ++jj ){
         uint8_t dxl_id = joints[jj].get_dxl_id();
         if( joints[jj].get_ope_mode() == OPERATING_MODE_CURRENT ){
@@ -506,7 +506,7 @@ void DXLPORT_CONTROL::startup_motion( void )
         motion_work.home_rad  = DXLPOS2RAD( motion_work.home ) - DXLPOS2RAD( joints[jj].get_center() );
         motion_work.start_rad = joints[jj].get_position();
         motion_work.start     = RAD2DXLPOS( motion_work.start_rad ) + joints[jj].get_center();
-        motion_work.step_rad  = 
+        motion_work.step_rad  =
             (motion_work.home > motion_work.start) ? ((motion_work.home_rad - motion_work.start_rad)/step_max)
                                                    : -((motion_work.start_rad - motion_work.home_rad)/step_max);
         if( joints[jj].get_ope_mode() == OPERATING_MODE_CURRENT ){
@@ -862,7 +862,7 @@ void DXLPORT_CONTROL::set_param_home_offset( uint8_t dxl_id, int val )
             if( new_param.homing_offset != set_param ){
                 uint8_t dxl_error = 0; // Dynamixel error
                 lock_port();
-                int dxl_comm_result = packetHandler->write4ByteTxRx( portHandler, dxl_id, ADDR_MOVING_THRESHOLD, set_param, &dxl_error );
+                int dxl_comm_result = packetHandler->write4ByteTxRx( portHandler, dxl_id, ADDR_HOMING_OFFSET, set_param, &dxl_error );
                 unlock_port();
                 if( dxl_comm_result != COMM_SUCCESS ){
                     error_queue.push( (std::string(__func__) + " ") + packetHandler->getTxRxResult( dxl_comm_result ) );
