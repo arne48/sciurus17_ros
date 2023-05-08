@@ -3,8 +3,6 @@ max_obstacle_height: 0.60  # assume something like an arm is mounted on top of t
 # Obstacle Cost Shaping (http://wiki.ros.org/costmap_2d/hydro/inflation)
 footprint: [[-0.350, -0.210], [-0.350, 0.210], [0.100, 0.210], [0.100, -0.210]]
 
-map_type: voxel
-
 obstacle_layer:
   enabled:              true
   max_obstacle_height:  0.6
