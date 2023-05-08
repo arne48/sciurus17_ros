@@ -1,4 +1,4 @@
-image: /home/arne/catkin_ws/src/sciurus17_ros/sciurus17_navigation/maps/map_wg_office.pgm
+image: map_wg_office.pgm
 resolution: 0.050000
 origin: [-22.800000, -22.800000, 0.000000]
 negate: 0

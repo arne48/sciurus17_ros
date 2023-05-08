@@ -1,4 +1,4 @@
-image: /home/user/catkin_ws/src/sciurus17_ros/sciurus17_navigation/maps/map_atr_office.pgm
+image: map_atr_office.pgm
 resolution: 0.050000
 origin: [-10.000000, -10.000000, 0.000000]
 negate: 0
